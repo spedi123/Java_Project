@@ -21,6 +21,7 @@ public class Horse {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private boolean onBoard;
 	private Integer position;
 	
 	@Column(updatable=false)
@@ -31,8 +32,22 @@ public class Horse {
 	@JoinColumn(name = "player_id")
 	private Player player;
 	
+	
+	//Constructors
+	
 	public Horse() {
 		this.position = -1;
+		this.onBoard = false;
+	}
+	
+	
+	
+	//Methods
+	public void addPos(int dice) {
+		if((this.position + dice) > 51) {
+			this.position = this.position + dice - 52;				
+		}
+		this.position +=  dice;
 	}
 	
 	public void killHorse() {
@@ -41,18 +56,36 @@ public class Horse {
 	public void finishHorse() {
 		this.position = -2;
 	}
-	public void addPos(int dice) {
-		if((this.position + dice) > 51) {
-			this.position = this.position + dice - 52;				
-		}
-		this.position +=  dice;
-	}
+	
+	
+	
+	
+	//Getters and Setters
+	
+	
+	
 	
 	
 	public Long getId() {
 		return id;
 	}
+	
+	public Player getPlayer() {
+		return player;
+	}
 
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+
+
+	public boolean isOnBoard() {
+		return onBoard;
+	}
+
+	public void setOnBoard(boolean onBoard) {
+		this.onBoard = onBoard;
+	}
 
 	public void setId(Long id) {
 		this.id = id;

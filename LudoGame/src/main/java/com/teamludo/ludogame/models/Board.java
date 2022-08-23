@@ -20,11 +20,7 @@ public class Board {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	private String turn;
-	private Player player1;
-	private Player player2;
-	private Player player3;
-	private Player player4;
+	private Player turn;
 	
 	@OneToMany(mappedBy="board", fetch = FetchType.LAZY)
     private List<Player> players;
@@ -32,72 +28,126 @@ public class Board {
 	@Column(updatable=false)
 	private Date createdAt;
 	private Date updatedAt;
-	private Horse[] board;
 	
 	public Board() {
-		this.board = new Horse[52];
+			Player newP1 = new Player();
+			newP1.setColor("red");
+			newP1.setStartPosition(0);
+			this.players.add(newP1);
+			
+			Player newP2 = new Player();
+			newP2.setColor("green");
+			newP2.setStartPosition(13);
+			this.players.add(newP2);
+			
+			Player newP3 = new Player();
+			newP3.setColor("blue");
+			newP3.setStartPosition(26);
+			this.players.add(newP3);
+			
+			Player newP4 = new Player();
+			newP4.setColor("yellow");
+			newP4.setStartPosition(39);
+			this.players.add(newP4);
+			
+			this.turn = this.players.get(0);
 	}
 	
-	public boolean isBoardEmpty() {
-		for(int i = 0; i < 52; i++) {
-			if(this.board[i] != null) {
-				return false;
-			}
-		}
-		return true;
-	}
 
-	public short rollDice() {
-		short dice1 = (short) Math.floor(Math.random() * 6); 
-		short dice2 = (short) Math.floor(Math.random() * 6);
-		return (short) (dice1 + dice2);
+	public int rollDice() {
+		int dice1 = (int) Math.floor(Math.random() * 6); 
+		int dice2 = (int) Math.floor(Math.random() * 6);
+		return (dice1 + dice2);
 	}
 	
-	public void moveHorse(Horse horse, short dice) {
-		this.board[horse.getPosition() + dice] = horse;
-		this.board[horse.getPosition()] = null;
+	public void moveHorse(Horse horse, int dice) {
 		horse.setPosition(horse.getPosition()+ dice);
 	}
 	
-	public boolean setHorseOnBoard(Horse horse, short dice) {
+	public boolean canMove(Horse horse, int dice) {
 		
-		if(this.board[horse.getPosition() + dice] == null) {
-			this. moveHorse(horse, dice);
-			return true;
-		}
-		
-		
-		
-		else if(this.board[horse.getPosition() + dice] != null) {
-			
-			
-			if(this.board[horse.getPosition() + dice].player_id == horse.player_id) {
-				return false;
-			}
-			
-			
-			else if(this.board[horse.getPosition() + dice].player_id != horse.player_id) {
-				this.board[horse.getPosition() + dice].killHorse();
-				this.moveHorse(horse, dice);
-				return true;
-			}
-		}
-		return false;
+		return true;
 	}
 	
+//	if(this.board[horse.getPosition() + dice] == null) {
+//		this. moveHorse(horse, dice);
+//		return true;
+//	}
+//	
+//	
+//	
+//	else if(this.board[horse.getPosition() + dice] != null) {
+//		
+//		
+//		if(this.board[horse.getPosition() + dice].getPlayer() == horse.getPlayer()) {
+//			return false;
+//		}
+//		
+//		
+//		else if(this.board[horse.getPosition() + dice].getPlayer() != horse.getPlayer()) {
+//			this.board[horse.getPosition() + dice].killHorse();
+//			this.moveHorse(horse, dice);
+//			return true;
+//		}
+//	}
+//	return false;
 	
 	
 	
-	public Horse getHorseOnSquare(short position) {
-		return this.board[position];
+	
+	
+	
+	
+	public Long getId() {
+		return id;
 	}
-	
-	
-	
-	
-	
-	
-	
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public Player getTurn() {
+		return turn;
+	}
+
+
+	public void setTurn(Player turn) {
+		this.turn = turn;
+	}
+
+
+	public List<Player> getPlayers() {
+		return players;
+	}
+
+
+	public void setPlayers(List<Player> players) {
+		this.players = players;
+	}
+
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+
 	@PrePersist
     protected void onCreate(){
         this.createdAt = new Date();

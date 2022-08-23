@@ -24,13 +24,10 @@ public class Player {
 	private Long id;
 	
 	private String color;
-	private Horse horseA;
-	private Horse horseB;
-	private Horse horseC;
-	private Horse horseD;
-	private ArrayList<Horse> finishLane;
-	private ArrayList<Horse> homeBase;
-	private ArrayList<Horse> afterFinish;
+	private Integer finishedHorse;
+	private Integer startPosition;
+	
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "board_id")
 	private Board board;
@@ -41,19 +38,37 @@ public class Player {
 	private Date createdAt;
 	private Date updatedAt;
 
+	
+	//Constructors
+	
 	public Player() {
-		for(int i = 0; i<5; i++) {
-		this.finishLane.add(null);
+		for(int i = 0; i < 4; i++) {
+			Horse newH = new Horse();
+			horses.add(newH);
 		}
+		this.finishedHorse = 0;
 	
 		
 	}
 	public Player(String color) {
 		this.color = color;
-		
+		for(int i = 0; i < 4; i++) {
+			Horse newH = new Horse();
+			horses.add(newH);
+		}
+		this.finishedHorse = 0;
 	}
 
 	
+	
+	//Getters and Setters
+	
+	public Integer getStartPosition() {
+		return startPosition;
+	}
+	public void setStartPosition(Integer startPosition) {
+		this.startPosition = startPosition;
+	}
 	
 	public Long getId() {
 		return id;
@@ -67,47 +82,25 @@ public class Player {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public Horse getHorseA() {
-		return horseA;
+	
+	
+	public Integer getFinishedHorse() {
+		return finishedHorse;
 	}
-	public void setHorseA(Horse horseA) {
-		this.horseA = horseA;
+	public void setFinishedHorse(Integer finishedHorse) {
+		this.finishedHorse = finishedHorse;
 	}
-	public Horse getHorseB() {
-		return horseB;
+	public Board getBoard() {
+		return board;
 	}
-	public void setHorseB(Horse horseB) {
-		this.horseB = horseB;
+	public void setBoard(Board board) {
+		this.board = board;
 	}
-	public Horse getHorseC() {
-		return horseC;
+	public ArrayList<Horse> getHorses() {
+		return horses;
 	}
-	public void setHorseC(Horse horseC) {
-		this.horseC = horseC;
-	}
-	public Horse getHorseD() {
-		return horseD;
-	}
-	public void setHorseD(Horse horseD) {
-		this.horseD = horseD;
-	}
-	public ArrayList<Horse> getFinishLane() {
-		return finishLane;
-	}
-	public void setFinishLane(ArrayList<Horse> finishLane) {
-		this.finishLane = finishLane;
-	}
-	public ArrayList<Horse> getHomeBase() {
-		return homeBase;
-	}
-	public void setHomeBase(ArrayList<Horse> homeBase) {
-		this.homeBase = homeBase;
-	}
-	public ArrayList<Horse> getAfterFinish() {
-		return afterFinish;
-	}
-	public void setAfterFinish(ArrayList<Horse> afterFinish) {
-		this.afterFinish = afterFinish;
+	public void setHorses(ArrayList<Horse> horses) {
+		this.horses = horses;
 	}
 	public Date getCreatedAt() {
 		return createdAt;

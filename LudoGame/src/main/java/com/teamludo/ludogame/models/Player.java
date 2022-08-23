@@ -45,6 +45,7 @@ public class Player {
 		for(int i = 0; i<5; i++) {
 		this.finishLane.add(null);
 		}
+	
 		
 	}
 	public Player(String color) {

@@ -1,27 +1,34 @@
 package com.teamludo.ludogame.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="game_data")
+@Table(name="boards")
 public class Board {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	private String turn;
-	private String player1;
-	private String player2;
-	private String player3;
-	private String player4;
+	private Player player1;
+	private Player player2;
+	private Player player3;
+	private Player player4;
+	
+	@OneToMany(mappedBy="board", fetch = FetchType.LAZY)
+    private List<Player> players;
+	
 	@Column(updatable=false)
 	private Date createdAt;
 	private Date updatedAt;
@@ -47,30 +54,30 @@ public class Board {
 	}
 	
 	public void moveHorse(Horse horse, short dice) {
-		this.board[horse.position + dice] = horse;
-		this.board[horse.position] = null;
-		horse.positon += dice;
+		this.board[horse.getPosition() + dice] = horse;
+		this.board[horse.getPosition()] = null;
+		horse.setPosition(horse.getPosition()+ dice);
 	}
 	
 	public boolean setHorseOnBoard(Horse horse, short dice) {
 		
-		if(this.board[horse.position + dice] == null) {
+		if(this.board[horse.getPosition() + dice] == null) {
 			this. moveHorse(horse, dice);
 			return true;
 		}
 		
 		
 		
-		else if(this.board[horse.position + dice] != null) {
+		else if(this.board[horse.getPosition() + dice] != null) {
 			
 			
-			if(this.board[horse.position + dice].player_id == horse.player_id) {
+			if(this.board[horse.getPosition() + dice].player_id == horse.player_id) {
 				return false;
 			}
 			
 			
-			else if(this.board[horse.position + dice].player_id != horse.player_id) {
-				this.board[horse.position + dice].setPosition(-1);
+			else if(this.board[horse.getPosition() + dice].player_id != horse.player_id) {
+				this.board[horse.getPosition() + dice].killHorse();
 				this.moveHorse(horse, dice);
 				return true;
 			}

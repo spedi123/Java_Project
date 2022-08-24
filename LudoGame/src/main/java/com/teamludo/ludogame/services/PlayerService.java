@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.teamludo.ludogame.models.Board;
 import com.teamludo.ludogame.models.Player;
 import com.teamludo.ludogame.repos.PlayerRepository;
 
@@ -36,5 +37,9 @@ public class PlayerService {
 	
 	public void deletePlayer(Long id) {
 		playerRepository.deleteById(id);
+	}
+	
+	public List<Player> allPlayersOfBoard(Board board) {
+		return playerRepository.findAllByBoard(board);
 	}
 }

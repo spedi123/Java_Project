@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.teamludo.ludogame.models.Horse;
+import com.teamludo.ludogame.models.Player;
 import com.teamludo.ludogame.repos.HorseRepository;
 
 @Service
@@ -36,5 +37,9 @@ public class HorseService {
 	
 	public void deleteHorse(Long id) {
 		horseRepository.deleteById(id);
+	}
+	
+	public List<Horse> allHorsesOfPlayer(Player player) {
+		return horseRepository.findAllByPlayer(player);
 	}
 }

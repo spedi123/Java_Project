@@ -1,7 +1,7 @@
 package com.teamludo.ludogame.models;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +15,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.teamludo.ludogame.services.PlayerService;
 
 @Entity
 @Table(name="players")
@@ -33,12 +37,13 @@ public class Player {
 	private Board board;
 	
 	@OneToMany(fetch = FetchType.LAZY)
-	private ArrayList<Horse> horses;
+	private List<Horse> horses;
 	@Column(updatable=false)
 	private Date createdAt;
 	private Date updatedAt;
 
-	
+	@Autowired
+	PlayerService playerService;
 	//Constructors
 	
 	public Player() {
@@ -47,7 +52,7 @@ public class Player {
 			horses.add(newH);
 		}
 		this.finishedHorse = 0;
-	
+		playerService.savePlayer(this);
 		
 	}
 	public Player(String color) {
@@ -57,6 +62,7 @@ public class Player {
 			horses.add(newH);
 		}
 		this.finishedHorse = 0;
+		playerService.savePlayer(this);
 	}
 
 	
@@ -96,10 +102,10 @@ public class Player {
 	public void setBoard(Board board) {
 		this.board = board;
 	}
-	public ArrayList<Horse> getHorses() {
+	public List<Horse> getHorses() {
 		return horses;
 	}
-	public void setHorses(ArrayList<Horse> horses) {
+	public void setHorses(List<Horse> horses) {
 		this.horses = horses;
 	}
 	public Date getCreatedAt() {

@@ -43,6 +43,20 @@ public class Horse {
 	
 	
 	//Methods
+	public boolean isAddPos(int dice, int newPos) {
+		if((this.position + dice) > 51) {
+			int currPos = this.position + dice - 52;
+			if(currPos == newPos) {
+				return true;
+			}
+			return false;
+		}
+		if(this.position + dice == newPos) {
+			return true;
+		}
+		return false;
+	}
+	
 	public void addPos(int dice) {
 		if((this.position + dice) > 51) {
 			this.position = this.position + dice - 52;				

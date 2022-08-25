@@ -16,11 +16,11 @@ import com.teamludo.ludogame.models.Horse;
 @Controller
 public class MainController {
 
-	@Autowired
-	LudoService ludoServ;
-	
-	@Autowired
-	UserService userServ;
+//	@Autowired
+//	LudoService ludoServ;
+//	
+//	@Autowired
+//	UserService userServ;
 	
 	@GetMapping("/ludo_game")
 	public String home(@Valid @ModelAttribute Horse position, BindingResult result, HttpSession session, Model model) {
@@ -32,10 +32,10 @@ public class MainController {
 		return "game.jsp";
 	}
 	
-	@PostMapping()
-	public String home() {
-
-	
-	
-}
+//	@PostMapping()
+//	public String home() {
+//
+//	
+//	
+//}
 }

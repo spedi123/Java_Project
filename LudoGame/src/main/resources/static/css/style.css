@@ -1,12 +1,12 @@
 @charset "UTF-8";
 
-#description{
-	background-color: #9FC5F8;
+#msg{
+	background-color: palegoldenrod;
 	margin: auto;
     width: 50%;
     border: 3px solid black;
     padding: 30px;
-    
+	color: purple;
 }
 
 #form{

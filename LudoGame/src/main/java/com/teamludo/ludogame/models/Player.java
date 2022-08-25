@@ -16,10 +16,6 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.teamludo.ludogame.services.PlayerService;
-
 @Entity
 @Table(name="players")
 public class Player {
@@ -30,6 +26,7 @@ public class Player {
 	private String color;
 	private Integer finishedHorse;
 	private Integer startPosition;
+	private boolean turn;
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -42,27 +39,17 @@ public class Player {
 	private Date createdAt;
 	private Date updatedAt;
 
-	@Autowired
-	PlayerService playerService;
+
 	//Constructors
 	
 	public Player() {
-		for(int i = 0; i < 4; i++) {
-			Horse newH = new Horse();
-			horses.add(newH);
-		}
 		this.finishedHorse = 0;
-		playerService.savePlayer(this);
 		
 	}
 	public Player(String color) {
 		this.color = color;
-		for(int i = 0; i < 4; i++) {
-			Horse newH = new Horse();
-			horses.add(newH);
-		}
 		this.finishedHorse = 0;
-		playerService.savePlayer(this);
+		
 	}
 
 	
@@ -90,6 +77,12 @@ public class Player {
 	}
 	
 	
+	public boolean isTurn() {
+		return turn;
+	}
+	public void setTurn(boolean turn) {
+		this.turn = turn;
+	}
 	public Integer getFinishedHorse() {
 		return finishedHorse;
 	}

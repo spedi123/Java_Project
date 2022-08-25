@@ -1,6 +1,5 @@
 package com.teamludo.ludogame.models;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,19 +14,12 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.teamludo.ludogame.services.BoardService;
-import com.teamludo.ludogame.services.HorseService;
-import com.teamludo.ludogame.services.PlayerService;
-
 @Entity
 @Table(name="boards")
 public class Board {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	private Player turn;
 	
 	@OneToMany(mappedBy="board", fetch = FetchType.LAZY)
     private List<Player> players;
@@ -36,38 +28,9 @@ public class Board {
 	private Date createdAt;
 	private Date updatedAt;
 	
-	@Autowired
-	BoardService boardService;
 	
-	@Autowired
-	HorseService horseService;
-	
-	@Autowired
-	PlayerService playerService;
 
 	public Board() {
-			Player newP1 = new Player();
-			newP1.setColor("red");
-			newP1.setStartPosition(0);
-			this.players.add(newP1);
-			
-			Player newP2 = new Player();
-			newP2.setColor("green");
-			newP2.setStartPosition(13);
-			this.players.add(newP2);
-			
-			Player newP3 = new Player();
-			newP3.setColor("blue");
-			newP3.setStartPosition(26);
-			this.players.add(newP3);
-			
-			Player newP4 = new Player();
-			newP4.setColor("yellow");
-			newP4.setStartPosition(39);
-			this.players.add(newP4);
-			
-			this.turn = this.players.get(0);
-			boardService.saveBoard(this);
 	}
 	
 
@@ -81,47 +44,47 @@ public class Board {
 		horse.setPosition(horse.getPosition()+ dice);
 	}
 	
-	public ArrayList<Horse> makeHorseArr(){
-		ArrayList<Player> playerList = new ArrayList<Player>(playerService.allPlayersOfBoard(this));
-		ArrayList<Horse> horseList = new ArrayList<Horse>();
-		for(int i = 0; i < 4; i++) {
-			ArrayList<Horse> playerHorse = (ArrayList<Horse>) horseService.allHorsesOfPlayer(playerList.get(i));
-			for(int j = 0; j < 4; j++) {
-				horseList.add(playerHorse.get(j));
-			}
-		}
-		return horseList;
-	}
+//	public ArrayList<Horse> makeHorseArr(){
+//		ArrayList<Player> playerList = new ArrayList<Player>(playerService.allPlayersOfBoard(this));
+//		ArrayList<Horse> horseList = new ArrayList<Horse>();
+//		for(int i = 0; i < 4; i++) {
+//			ArrayList<Horse> playerHorse = (ArrayList<Horse>) horseService.allHorsesOfPlayer(playerList.get(i));
+//			for(int j = 0; j < 4; j++) {
+//				horseList.add(playerHorse.get(j));
+//			}
+//		}
+//		return horseList;
+//	}
 	
-	public ArrayList<Integer> makePositionArr(){
-		ArrayList<Horse> horseList = this.makeHorseArr();
-		ArrayList<Integer> positionList = new ArrayList<Integer>();
-		for(int i = 0; i < 16; i++) {
-			positionList.add(horseList.get(i).getPosition());
-		}
-		return positionList;
-	}
+//	public ArrayList<Integer> makePositionArr(){
+//		ArrayList<Horse> horseList = this.makeHorseArr();
+//		ArrayList<Integer> positionList = new ArrayList<Integer>();
+//		for(int i = 0; i < 16; i++) {
+//			positionList.add(horseList.get(i).getPosition());
+//		}
+//		return positionList;
+//	}
 	
-	public boolean canMove(Horse horse, Integer dice, Integer newPos) {
-		
-		//if the horse cannot move to new position in the number of dice rolls
-		if(!horse.isAddPos(dice, newPos)) {
-			return false;
-		}
-		
-		//if there is a horse already in that position
-		if(this.makePositionArr().contains(newPos)) {
-			
-			//if the horse in that position is owned by the same player as the horse being moved
-			if(this.makeHorseArr().get(this.makePositionArr().indexOf(newPos)).getPlayer() == horse.getPlayer()) {
-				return false;
-			}
-			//if the horse in that position is NOT owned by the same player as the horse being moved
-			return true;
-		}
-		//if there is no horse in the new position
-		return true;
-	}
+//	public boolean canMove(Horse horse, Integer dice, Integer newPos) {
+//		
+//		//if the horse cannot move to new position in the number of dice rolls
+//		if(!horse.isAddPos(dice, newPos)) {
+//			return false;
+//		}
+//		
+//		//if there is a horse already in that position
+//		if(this.makePositionArr().contains(newPos)) {
+//			
+//			//if the horse in that position is owned by the same player as the horse being moved
+//			if(this.makeHorseArr().get(this.makePositionArr().indexOf(newPos)).getPlayer() == horse.getPlayer()) {
+//				return false;
+//			}
+//			//if the horse in that position is NOT owned by the same player as the horse being moved
+//			return true;
+//		}
+//		//if there is no horse in the new position
+//		return true;
+//	}
 	
 	
 //	if(this.board[horse.getPosition() + dice] == null) {
@@ -162,15 +125,6 @@ public class Board {
 		this.id = id;
 	}
 
-
-	public Player getTurn() {
-		return turn;
-	}
-
-
-	public void setTurn(Player turn) {
-		this.turn = turn;
-	}
 
 
 	public List<Player> getPlayers() {

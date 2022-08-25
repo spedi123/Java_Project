@@ -24,8 +24,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>Instructions for Ludo or Sorry!</h2>
-	
+	 <div class="h3" id="msg">
+        <h2>Instructions for Ludo or Sorry!</h2>
+        <iframe width="420" height="315"
+        src="https://www.youtube.com/embed/IHkRjn8XVtw">
+        </iframe>
 	<p>First Chose Color:</p>
 	<p> Each new user gets to chose a player color or player theme. There are four color options. </p>
 	<p>Every player has four horses. And every Ludo game can have between 2 to 4 players. </p>	
@@ -40,5 +43,7 @@
 	
 	<p>How to win: </p>
 	<p> The player who can get all of their four horses/pieces to finish line first will win.</p>
+
+</div>
 </body>
 </html>

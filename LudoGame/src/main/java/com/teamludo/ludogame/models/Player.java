@@ -26,6 +26,7 @@ public class Player {
 	private String color;
 	private Integer finishedHorse;
 	private Integer startPosition;
+	private boolean turn;
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -38,25 +39,17 @@ public class Player {
 	private Date createdAt;
 	private Date updatedAt;
 
-	
+
 	//Constructors
 	
 	public Player() {
-		for(int i = 0; i < 4; i++) {
-			Horse newH = new Horse();
-			horses.add(newH);
-		}
 		this.finishedHorse = 0;
-	
 		
 	}
 	public Player(String color) {
 		this.color = color;
-		for(int i = 0; i < 4; i++) {
-			Horse newH = new Horse();
-			horses.add(newH);
-		}
 		this.finishedHorse = 0;
+		
 	}
 
 	
@@ -84,6 +77,12 @@ public class Player {
 	}
 	
 	
+	public boolean isTurn() {
+		return turn;
+	}
+	public void setTurn(boolean turn) {
+		this.turn = turn;
+	}
 	public Integer getFinishedHorse() {
 		return finishedHorse;
 	}

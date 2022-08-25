@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="/css/style.css"/>
 <script src="/webjars/jquery/jquery.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/app.js"></script>
+
 <title>Insert title here</title>
 </head>
 
@@ -92,9 +92,9 @@
             <div class="red"></div>
             <div class="player1"></div>
             <div class="red"></div>
-            <div class="coin" id="n48">48</div>
+            <div class="coin" id="n48" onClick="moveHorse(0)">48</div>
             <div class="blue" id="b1">b1</div>
-            <div class="blue" id="n0" onClick="setFromPostion()">0</div>
+            <div class="blue" id="n0" onClick="moveHorse(0)"><c:if test="${horsePositionList.get(0) == 0}"><h1>H</h1></c:if>0</div>
             <div class="blue"></div>
             <div class="player2"></div>
             <div class="blue"></div>
@@ -111,7 +111,7 @@
             <div class="red"></div>
             <div class="coin" id="n47">47</div>
             <div class="blue" id="b2">b2</div>
-            <div class="coin" id="n1">1</div>
+            <div class="coin" id="n1"  onClick="moveHorse(1)"><c:if test="${horsePositionList.contains(1)}"><h1>H</h1></c:if>1</div>
             <div class="blue"></div>
             <div class="blue"></div>
             <div class="blue"></div>
@@ -126,9 +126,9 @@
             <div class="red"></div>
             <div class="player1"></div>
             <div class="red"></div>
-            <div class="coin" id="n46">46</div>
+            <div class="coin" id="n46" onClick="moveHorse(46)">46</div>
             <div class="blue" id="b3">b3</div>
-            <div class="coin" id="n2">2</div>
+            <div class="coin" id="n2"  onClick="moveHorse(2)"><c:if test="list.includes(2)"><h1>H</h1></c:if>2</div>
             <div class="blue"></div>
             <div class="player2"></div>
             <div class="blue"></div>
@@ -324,11 +324,19 @@
             <div class="green"></div>
         </div>
     </div>
-    <form:form action="/ludo" method="post" modelAttribute="position" id="form">
-	    <form:input type="hidden" path="user" value="${user_id}" />
-	    <form:input type="hidden" path="positionFrom" value={fromPos} />
-	    <form:input type="hidden" path="positionTo" value={toPos} />
-    </form:form>
-	<input type="submit" value="move">
+    <form action="/test1/move" method='post'>
+    	<input type="hidden" name="fromPos" id="fromPos"/>
+    	<input type="hidden" name="toPos" id="toPos"/>
+    	<input type="submit" value="move">
+    </form>
+    <c:forEach var="onePos" items="${horsePositionList}">
+    	<h1><c:out value="${onePos}"/></h1>
+    </c:forEach>
+	<h1><c:out value="${horsePositionList.contains(2)}"/></h1>
+	<script type="text/javascript" src="/js/app.js"></script>
+	<script>
+		var list = ${horsePositionList}
+		console.log(list.includes(2))
+	</script>
 </body>
 </html>

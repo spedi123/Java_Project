@@ -74,7 +74,8 @@
     <h4>Dice Roll Two: <c:out value="${dice2}"/></h4>
     <h4>Dice Roll Total: <c:out value="${dice2 + dice1}"/></h4>
     <div><a href="/instructions">Instructions</a></div>
-    <div><a href="/test1">Re-roll - FOR TEST PURPOSES ONLY</a></div>
+    <div class="diceroll" ><a href="/test1">Re-roll - FOR TEST PURPOSES ONLY</a></div>
+    <div class="sound_button btn btn-success">Sound</div>
     <form action="/test1/move" method='post'>
     	<input type="hidden" name="dice1" value="${dice1}"/>
     	<input type="hidden" name="dice2" value="${dice2}"/>

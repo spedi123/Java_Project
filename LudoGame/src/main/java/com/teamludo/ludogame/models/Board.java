@@ -33,8 +33,9 @@ public class Board {
 	public Board() {
 	}
 	
+	
 
-	public int rollDice() {
+	public static int rollDice() {
 		int dice1 = (int) Math.floor(Math.random() * 6); 
 		int dice2 = (int) Math.floor(Math.random() * 6);
 		return (dice1 + dice2);

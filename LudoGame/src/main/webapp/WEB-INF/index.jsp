@@ -68,6 +68,7 @@
   </head>
 <body>
     <div class="container">
+    <h1>Dice Roll: <c:out value="${dice}"/></h1>
         <div class="row">
             <div class="red"></div>
             <div class="red"></div>
@@ -130,7 +131,7 @@
             <div class="blue" id="b3">b3</div>
             <div class="coin" id="n2"  onClick="moveHorse(2)"><c:if test="${horsePositionList.get(0) == 2}"><div class="player2"></div></c:if>2</div>
             <div class="blue"></div>
-            <div class="coin"><c:if test="${horsePositionList.get(0) == -1}"><div class="player2"></div></c:if></div>
+            <div class="coin" onClick="moveHorse(-1)"><c:if test="${horsePositionList.get(0) == -1}"><div class="player2"></div></c:if></div>
             <div class="blue"></div>
             <div class="blue"></div>
             <div class="coin"><c:if test="${horsePositionList.get(1) == -1}"><div class="player2"></div></c:if></div>
@@ -202,7 +203,7 @@
             <div class="green" id="g3">g3</div>
             <div class="green" id="g2">g2</div>
             <div class="green" id="g1">g1</div>
-            <div class="coin" id="n11"><c:if test="${horsePositionList.get(0) == 11}"><div class="player2"></div></c:if>11</div>
+            <div class="coin" id="n11" onClick="moveHorse(11)"><c:if test="${horsePositionList.get(0) == 11}"><div class="player2"></div></c:if>11</div>
         </div>
         <div class="row">
             <div class="coin" id="n36" onClick="moveHorse(36)"><c:if test="${horsePositionList.get(0) == 36}"><div class="player2"></div></c:if>36</div>
@@ -325,18 +326,20 @@
         </div>
     </div>
     <form action="/test1/move" method='post'>
+    	<input type="hidden" name="dice" value="${dice}"/>
     	<input type="hidden" name="fromPos" id="fromPos"/>
     	<input type="hidden" name="toPos" id="toPos"/>
     	<input type="submit" value="move">
     </form>
     <c:forEach var="onePos" items="${horsePositionList}">
-    	<h1><c:out value="${onePos}"/></h1>
+    	<h1>Horse Position: <c:out value="${onePos}"/></h1>
     </c:forEach>
 	<h1><c:out value="${horsePositionList.contains(1)}"/></h1>
+	
 	<script type="text/javascript" src="/js/app.js"></script>
 	<script>
 		var list = ${horsePositionList}
-		console.log(list.includes(2))
+		console.log(list.includes(1))
 	</script>
 </body>
 </html>

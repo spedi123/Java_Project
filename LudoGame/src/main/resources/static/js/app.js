@@ -27,9 +27,10 @@ function setToPosition(pos){
 }
 
 const soundBtn = document.querySelector('.sound_button')
+const diceroll = document.querySelector('.diceroll')
 	
 const bgSound = new Audio("/sounds/bg.mp3");
-console.log(bgSound)
+const rollSound = new Audio("/sounds/diceroll.mp3")
 
 soundBtn.addEventListener('click', () => {
 	playSound(bgSound)
@@ -39,3 +40,13 @@ function playSound(sound) {
 	sound.currentTime=0;
 	sound.play();
 }
+
+diceroll.addEventListener('click', () => {
+	playSound(rollSound)
+})
+		
+function playSound(sound) {
+	sound.currentTime=0;
+	sound.play();
+}
+

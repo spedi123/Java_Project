@@ -36,9 +36,8 @@ public class Board {
 	
 
 	public static int rollDice() {
-		int dice1 = (int) Math.floor(Math.random() * 6); 
-		int dice2 = (int) Math.floor(Math.random() * 6);
-		return (dice1 + dice2);
+		int dice = (int) Math.ceil(Math.random() * 6);
+		return dice;
 	}
 	
 	public void moveHorse(Horse horse, Integer dice) {

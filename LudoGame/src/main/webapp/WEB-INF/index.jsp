@@ -68,7 +68,9 @@
   </head>
 <body>
     <div class="container">
-    <h1>Dice Roll: <c:out value="${dice}"/></h1>
+    <h4>Dice Roll One: <c:out value="${dice1}"/></h4>
+    <h4>Dice Roll Two: <c:out value="${dice2}"/></h4>
+    <h4>Dice Roll Total: <c:out value="${dice2 + dice1}"/></h4>
         <div class="row">
             <div class="red"></div>
             <div class="red"></div>
@@ -93,7 +95,7 @@
             <div class="red"></div>
             <div class="player1"></div>
             <div class="red"></div>
-            <div class="coin" id="n48"><c:if test="${horsePositionList.get(0) == 48}"><div class="player2"></div></c:if>48</div>
+            <div class="coin" id="n48" onClick="moveHorse(48)"><c:if test="${horsePositionList.get(0) == 48}"><div class="player2"></div></c:if>48</div>
             <div class="blue" id="b1">b1</div>
             <div class="blue" id="n0" onClick="moveHorse(0)"><c:if test="${horsePositionList.get(0) == 0}"><div class="player2"></div></c:if>0</div>
             <div class="blue"></div>
@@ -326,7 +328,8 @@
         </div>
     </div>
     <form action="/test1/move" method='post'>
-    	<input type="hidden" name="dice" value="${dice}"/>
+    	<input type="hidden" name="dice1" value="${dice1}"/>
+    	<input type="hidden" name="dice2" value="${dice2}"/>
     	<input type="hidden" name="fromPos" id="fromPos"/>
     	<input type="hidden" name="toPos" id="toPos"/>
     	<input type="submit" value="move">

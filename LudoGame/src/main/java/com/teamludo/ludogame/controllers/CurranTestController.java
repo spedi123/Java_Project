@@ -23,11 +23,13 @@ public class CurranTestController {
 	public String curranTest(
 			Model model
 			) {
-		Integer dice = Board.rollDice();
+		Integer dice1 = Board.rollDice();
+		Integer dice2 = Board.rollDice();
 		List<Horse>horseList = horseService.allHorsesOfBoard((long) 1);
 		List<Integer> horsePositionList = horseService.allPosOfBoard((long) 1);
 		
-		model.addAttribute("dice", dice);
+		model.addAttribute("dice1", dice1);
+		model.addAttribute("dice2", dice2);
 		model.addAttribute("horsePositionList", horsePositionList);
 		model.addAttribute("horseList", horseList);
 		
@@ -38,26 +40,31 @@ public class CurranTestController {
 	public String currentTestMove(Model model, 
 			@RequestParam(value="fromPos") Integer fromPos,
 			@RequestParam(value="toPos") Integer toPos,
-			@RequestParam(value="dice") Integer dice
+			@RequestParam(value="dice1") Integer dice1,
+			@RequestParam(value="dice2") Integer dice2
 			) {
 		List<Horse>horseList = horseService.allHorsesOfBoard((long) 1);
 		List<Integer> horsePositionList = horseService.allPosOfBoard((long) 1);
 		
-		
+//		if(horsePositionList.contains(fromPos) && horseList.get(horsePositionList.indexOf(fromPos)).isAddPos((dice1 + dice1 +1), toPos)){
+//			
+//		}
 		
 		if(
 			horsePositionList.contains(fromPos) && 
-			horseList.get(horsePositionList.indexOf(fromPos)).isAddPos(dice, toPos)
+			horseList.get(horsePositionList.indexOf(fromPos)).isAddPos((dice1 + dice2), toPos)
 				) {
 			Horse thisHorse = horseList.get(horsePositionList.indexOf(fromPos));
 			thisHorse.setPosition(toPos);
 			horseService.saveHorse(thisHorse);
-			model.addAttribute("dice", dice);
+			model.addAttribute("dice1", dice1);
+			model.addAttribute("dice2", dice2);
 			model.addAttribute("horsePositionList", horsePositionList);
 			model.addAttribute("horseList", horseList);
 			return "redirect:/test1";
 		}
-		model.addAttribute("dice", dice);
+		model.addAttribute("dice1", dice1);
+		model.addAttribute("dice2", dice2);
 		model.addAttribute("horsePositionList", horsePositionList);
 		model.addAttribute("horseList", horseList);
 		return "index.jsp";

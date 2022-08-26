@@ -25,6 +25,8 @@
         div.row div{
             width: 50px;
             height: 50px;
+            padding: 0px;
+            text-align: center;
             border: 1px solid black;
             display: inline-block;
         }
@@ -315,7 +317,18 @@
             <div class="yellow"></div>
             <div class="coin" id="n25" onClick="moveHorse(25)"><c:if test="${horsePositionList.get(0) == 25}"><div class="player2"></div></c:if>25</div>
             <div class="coin" id="n24" onClick="moveHorse(24)"><c:if test="${horsePositionList.get(0) == 24}"><div class="player2"></div></c:if>24</div>
-            <div class="coin" id="n23" onClick="moveHorse(23)"><c:if test="${horsePositionList.get(0) == 23}"><div class="player2"></div></c:if>23</div>
+            <div class="coin" id="n23" onClick="moveHorse(23)">
+            	<c:set var="contains" value="false"/>
+            	<c:forEach var="horse" items="${horsePositionList}">
+				  <c:if test="${horse == 23}">
+				    <c:set var="contains" value="true" />
+				  </c:if>
+				</c:forEach>
+				<c:if test="${ contains }">
+					<div class="player2">
+					</div>
+				</c:if>23
+      		</div>
             <div class="green"></div>
             <div class="green"></div>
             <div class="green"></div>

@@ -52,7 +52,8 @@ public class CurranTestController {
 		
 		if(
 			horsePositionList.contains(fromPos) && 
-			horseList.get(horsePositionList.indexOf(fromPos)).isAddPos((dice1 + dice2), toPos)
+			horseList.get(horsePositionList.indexOf(fromPos)).isAddPos((dice1 + dice2), toPos) &&
+			!horsePositionList.contains(toPos)
 				) {
 			Horse thisHorse = horseList.get(horsePositionList.indexOf(fromPos));
 			thisHorse.setPosition(toPos);

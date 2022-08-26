@@ -138,7 +138,7 @@
             <div class="coin" onClick="moveHorse(-1)"><c:if test="${horsePositionList.get(0) == -1}"><div class="player2"></div></c:if></div>
             <div class="blue"></div>
             <div class="blue"></div>
-            <div class="coin"><c:if test="${horsePositionList.get(1) == -1}"><div class="player2"></div></c:if></div>
+            <div class="coin"onClick="moveHorse(-1)"><c:if test="${horsePositionList.get(1) == -1}"><div class="player2"></div></c:if></div>
             <div class="blue"></div>
         </div>
         <div class="row">
@@ -301,7 +301,16 @@
             <div class="yellow"></div>
             <div class="player3"></div>
             <div class="yellow"></div>
-            <div class="yellow" id="n26"onClick="moveHorse(26)"><c:if test="${horsePositionList.get(0) == 26}"><div class="player2"></div></c:if>26</div>
+            <div class="yellow" id="n26"onClick="moveHorse(26)"><c:set var="contains" value="false"/>
+            	<c:forEach var="horse" items="${horsePositionList}">
+				  <c:if test="${horse == 26}">
+				    <c:set var="contains" value="true" />
+				  </c:if>
+				</c:forEach>
+				<c:if test="${ contains }">
+					<div class="player2">
+					</div>
+				</c:if>26</div>
             <div class="yellow" id="y1">y1</div>
             <div class="coin" id="n5" onClick="moveHorse(22)"><c:if test="${horsePositionList.get(0) == 22}"><div class="player2"></div></c:if>22</div>
             <div class="green"></div>

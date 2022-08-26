@@ -14,4 +14,7 @@ public interface HorseRepository extends CrudRepository<Horse, Long> {
 	
 	@Query(value="SELECT horses.id, horses.created_at, horses.on_board, horses.position, horses.updated_at, player_id FROM boards JOIN (players JOIN horses ON players.id = horses.player_id) ON boards.id = players.board_id WHERE boards.id = ?1", nativeQuery=true)
 	List<Horse> findAllByBoard(Long id);
+	
+	@Query(value="SELECT horses.position FROM boards JOIN (players JOIN horses ON players.id = horses.player_id) ON boards.id = players.board_id WHERE boards.id = ?1", nativeQuery=true)
+	List<Integer> findAllPosByBoard(Long id);
 }

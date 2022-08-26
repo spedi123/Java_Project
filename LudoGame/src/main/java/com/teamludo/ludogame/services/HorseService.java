@@ -46,4 +46,8 @@ public class HorseService {
 	public List<Horse> allHorsesOfBoard(Long id){
 		return horseRepository.findAllByBoard(id);
 	}
+	
+	public List<Integer> allPosOfBoard(Long id){
+		return horseRepository.findAllPosByBoard(id);
+	}
 }

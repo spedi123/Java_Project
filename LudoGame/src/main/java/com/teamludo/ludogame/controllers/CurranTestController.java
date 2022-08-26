@@ -25,16 +25,10 @@ public class CurranTestController {
 			) {
 		
 		List<Horse>horseList = horseService.allHorsesOfBoard((long) 1);
-		Horse horse1 = horseList.get(0);
-		ArrayList<Integer> horsePositionList = new ArrayList<Integer>();
-		for(int i = 0; i < 16; i++) {
-			horsePositionList.add(horseList.get(i).getPosition());
-		}
+		List<Integer> horsePositionList = horseService.allPosOfBoard((long) 1);
+		
 		model.addAttribute("horsePositionList", horsePositionList);
 		model.addAttribute("horseList", horseList);
-		model.addAttribute("horse1", horse1);
-		
-		
 		
 		return "index.jsp";
 	}
@@ -45,11 +39,8 @@ public class CurranTestController {
 			@RequestParam(value="toPos") Integer toPos
 			) {
 		List<Horse>horseList = horseService.allHorsesOfBoard((long) 1);
-		Horse horse1 = horseList.get(0);
-		ArrayList<Integer> horsePositionList = new ArrayList<Integer>();
-		for(int i = 0; i < 16; i++) {
-			horsePositionList.add(horseList.get(i).getPosition());
-		}
+		List<Integer> horsePositionList = horseService.allPosOfBoard((long) 1);
+		
 
 		if(horsePositionList.contains(fromPos)) {
 			Horse thisHorse = horseList.get(horsePositionList.indexOf(fromPos));
@@ -57,12 +48,10 @@ public class CurranTestController {
 			horseService.saveHorse(thisHorse);
 			model.addAttribute("horsePositionList", horsePositionList);
 			model.addAttribute("horseList", horseList);
-			model.addAttribute("horse1", horse1);
 			return "redirect:/test1";
 		}
 		model.addAttribute("horsePositionList", horsePositionList);
 		model.addAttribute("horseList", horseList);
-		model.addAttribute("horse1", horse1);
 		return "index.jsp";
 	}
 	

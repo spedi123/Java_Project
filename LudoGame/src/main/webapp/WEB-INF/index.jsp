@@ -92,7 +92,7 @@
             <div class="red"></div>
             <div class="player1"></div>
             <div class="red"></div>
-            <div class="coin" id="n48" onClick="moveHorse(0)">48</div>
+            <div class="coin" id="n48">48</div>
             <div class="blue" id="b1">b1</div>
             <div class="blue" id="n0" onClick="moveHorse(0)"><c:if test="${horsePositionList.get(0) == 0}"><h1>H</h1></c:if>0</div>
             <div class="blue"></div>
@@ -128,7 +128,7 @@
             <div class="red"></div>
             <div class="coin" id="n46" onClick="moveHorse(46)">46</div>
             <div class="blue" id="b3">b3</div>
-            <div class="coin" id="n2"  onClick="moveHorse(2)"><c:if test="list.includes(2)"><h1>H</h1></c:if>2</div>
+            <div class="coin" id="n2"  onClick="moveHorse(2)"><c:if test="${horsePositionList.contains(1)}"><h1>H</h1></c:if>2</div>
             <div class="blue"></div>
             <div class="player2"></div>
             <div class="blue"></div>
@@ -332,7 +332,7 @@
     <c:forEach var="onePos" items="${horsePositionList}">
     	<h1><c:out value="${onePos}"/></h1>
     </c:forEach>
-	<h1><c:out value="${horsePositionList.contains(2)}"/></h1>
+	<h1><c:out value="${horsePositionList.contains(1)}"/></h1>
 	<script type="text/javascript" src="/js/app.js"></script>
 	<script>
 		var list = ${horsePositionList}

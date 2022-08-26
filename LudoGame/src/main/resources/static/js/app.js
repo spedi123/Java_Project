@@ -25,3 +25,17 @@ function setToPosition(pos){
     toPos.value = pos
 	console.log(toPos)
 }
+
+const soundBtn = document.querySelector('.sound_button')
+	
+const bgSound = new Audio("/sounds/bg.mp3");
+console.log(bgSound)
+
+soundBtn.addEventListener('click', () => {
+	playSound(bgSound)
+})
+		
+function playSound(sound) {
+	sound.currentTime=0;
+	sound.play();
+}

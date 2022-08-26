@@ -901,7 +901,7 @@
             <div class="green"></div>
         </div>
     </div>
-    
+
     <c:forEach var="onePos" items="${horsePositionList}">
     	<h1>Horse Position: <c:out value="${onePos}"/></h1>
     </c:forEach>

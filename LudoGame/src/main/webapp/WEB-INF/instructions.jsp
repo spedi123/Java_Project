@@ -43,7 +43,7 @@
 	
 	<p>How to win: </p>
 	<p> The player who can get all of their four horses/pieces to finish line first will win.</p>
-
+	<a href="/test1">Back to game</a>
 </div>
 </body>
 </html>

@@ -73,6 +73,15 @@
     <h4>Dice Roll One: <c:out value="${dice1}"/></h4>
     <h4>Dice Roll Two: <c:out value="${dice2}"/></h4>
     <h4>Dice Roll Total: <c:out value="${dice2 + dice1}"/></h4>
+    <div><a href="/instructions">Instructions</a></div>
+    <div><a href="/test1">Re-roll - FOR TEST PURPOSES ONLY</a></div>
+    <form action="/test1/move" method='post'>
+    	<input type="hidden" name="dice1" value="${dice1}"/>
+    	<input type="hidden" name="dice2" value="${dice2}"/>
+    	<input type="hidden" name="fromPos" id="fromPos"/>
+    	<input type="hidden" name="toPos" id="toPos"/>
+    	<input type="submit" value="move">
+    </form>
         <div class="row">
             <div class="red"></div>
             <div class="red"></div>
@@ -168,9 +177,27 @@
             <div class="red"></div>
             <div class="red"></div>
             <div class="red"></div>
-            <div class="coin" id="n47" onClick="moveHorse(47)"><c:if test="${horsePositionList.get(0) == 47}"><div class="player2"></div></c:if>47</div>
+            <div class="coin" id="n47" onClick="moveHorse(47)"><c:set var="contains" value="false"/>
+            	<c:forEach var="horse" items="${horsePositionList}">
+				  <c:if test="${horse == 47}">
+				    <c:set var="contains" value="true" />
+				  </c:if>
+				</c:forEach>
+				<c:if test="${ contains }">
+					<div class="player2">
+					</div>
+				</c:if>47</div>
             <div class="blue" id="b2">b2</div>
-            <div class="coin" id="n1"  onClick="moveHorse(1)"><c:if test="${horsePositionList.get(0) == 1}"><div class="player2"></div></c:if>1</div>
+            <div class="coin" id="n1"  onClick="moveHorse(1)"><c:set var="contains" value="false"/>
+            	<c:forEach var="horse" items="${horsePositionList}">
+				  <c:if test="${horse == 1}">
+				    <c:set var="contains" value="true" />
+				  </c:if>
+				</c:forEach>
+				<c:if test="${ contains }">
+					<div class="player2">
+					</div>
+				</c:if>1</div>
             <div class="blue"></div>
             <div class="blue"></div>
             <div class="blue"></div>
@@ -874,13 +901,7 @@
             <div class="green"></div>
         </div>
     </div>
-    <form action="/test1/move" method='post'>
-    	<input type="hidden" name="dice1" value="${dice1}"/>
-    	<input type="hidden" name="dice2" value="${dice2}"/>
-    	<input type="hidden" name="fromPos" id="fromPos"/>
-    	<input type="hidden" name="toPos" id="toPos"/>
-    	<input type="submit" value="move">
-    </form>
+    
     <c:forEach var="onePos" items="${horsePositionList}">
     	<h1>Horse Position: <c:out value="${onePos}"/></h1>
     </c:forEach>

@@ -19,6 +19,11 @@ public class CurranTestController {
 	@Autowired
 	private HorseService horseService;
 	
+	@GetMapping("/instructions")
+	public String instructions() {
+		return "instructions.jsp";
+	}
+	
 	@GetMapping("/test1")
 	public String curranTest(
 			Model model
@@ -46,9 +51,31 @@ public class CurranTestController {
 		List<Horse>horseList = horseService.allHorsesOfBoard((long) 1);
 		List<Integer> horsePositionList = horseService.allPosOfBoard((long) 1);
 		
-//		if(horsePositionList.contains(fromPos) && horseList.get(horsePositionList.indexOf(fromPos)).isAddPos((dice1 + dice1 +1), toPos)){
-//			
-//		}
+		if(
+				-17 < fromPos && fromPos < 0 && 
+				(dice1 == 6 || dice2 == 6) &&
+				horseList.get(horsePositionList.indexOf(fromPos)).isAddPos((dice1 + dice2), toPos) &&
+				!horsePositionList.contains(toPos)
+				){
+			
+			
+			Horse thisHorse = horseList.get(horsePositionList.indexOf(fromPos));
+			thisHorse.setPosition(toPos);
+			horseService.saveHorse(thisHorse);
+			model.addAttribute("dice1", dice1);
+			model.addAttribute("dice2", dice2);
+			model.addAttribute("horsePositionList", horsePositionList);
+			model.addAttribute("horseList", horseList);
+			return "redirect:/test1";
+		}
+		
+		if(-17 < fromPos && fromPos < 0) {
+			model.addAttribute("dice1", dice1);
+			model.addAttribute("dice2", dice2);
+			model.addAttribute("horsePositionList", horsePositionList);
+			model.addAttribute("horseList", horseList);
+			return "index.jsp";
+		}
 		
 		if(
 			horsePositionList.contains(fromPos) && 

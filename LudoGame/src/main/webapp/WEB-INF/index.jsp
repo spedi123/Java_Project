@@ -75,9 +75,9 @@
             <div class="red"></div>
             <div class="red"></div>
             <div class="red"></div>
-            <div class="coin" id="n49">49</div>
-            <div class="coin" id="n50">50</div>
-            <div class="coin" id="n51">51</div>
+            <div class="coin" id="n49" onClick="moveHorse(49)">49</div>
+            <div class="coin" id="n50" onClick="moveHorse(50)">50</div>
+            <div class="coin" id="n51" onClick="moveHorse(51)">51</div>
             <div class="blue"></div>
             <div class="blue"></div>
             <div class="blue"></div>
@@ -109,7 +109,7 @@
             <div class="red"></div>
             <div class="red"></div>
             <div class="red"></div>
-            <div class="coin" id="n47">47</div>
+            <div class="coin" id="n47" onClick="moveHorse(47)">47</div>
             <div class="blue" id="b2">b2</div>
             <div class="coin" id="n1"  onClick="moveHorse(1)"><c:if test="${horsePositionList.contains(1)}"><h1>H</h1></c:if>1</div>
             <div class="blue"></div>
@@ -143,9 +143,9 @@
             <div class="red"></div>
             <div class="red"></div>
             <div class="red"></div>
-            <div class="coin" id="n45">45</div>
+            <div class="coin" id="n45" onClick="moveHorse(45)">45</div>
             <div class="blue" id="b4">b4</div>
-            <div class="coin" id="n3">3</div>
+            <div class="coin" id="n3" onClick="moveHorse(3)">3</div>
             <div class="blue"></div>
             <div class="blue"></div>
             <div class="blue"></div>
@@ -160,9 +160,9 @@
             <div class="red"></div>
             <div class="red"></div>
             <div class="red"></div>
-            <div class="coin" id="n44">44</div>
+            <div class="coin" id="n44" onClick="moveHorse(44)">44</div>
             <div class="blue" id="b5">b5</div>
-            <div class="coin" id="n4">4</div>
+            <div class="coin" id="n4" onClick="moveHorse(4)">4</div>
             <div class="blue"></div>
             <div class="blue"></div>
             <div class="blue"></div>
@@ -171,24 +171,24 @@
             <div class="blue"></div>
         </div>
         <div class="row">
-            <div class="coin" id="n38">38</div>
-            <div class="red" id="n39">39</div>
-            <div class="coin" id="n40">40</div>
-            <div class="coin" id="n41">41</div>
-            <div class="coin" id="n42">42</div>
-            <div class="coin" id="n43">43</div>
+            <div class="coin" id="n38" onClick="moveHorse(38)">38</div>
+            <div class="red" id="n39" onClick="moveHorse(39)">39</div>
+            <div class="coin" id="n40" onClick="moveHorse(40)">40</div>
+            <div class="coin" id="n41" onClick="moveHorse(41)">41</div>
+            <div class="coin" id="n42" onClick="moveHorse(42)">42</div>
+            <div class="coin" id="n43" onClick="moveHorse(43)">43</div>
             <div class="coin"></div>
             <div class="coin"></div>
             <div class="coin"></div>
-            <div class="coin" id="n5">5</div>
-            <div class="coin" id="n6">6</div>
-            <div class="coin" id="n7">7</div>
-            <div class="coin" id="n8">8</div>
-            <div class="coin" id="n9">9</div>
-            <div class="coin" id="n10">10</div>
+            <div class="coin" id="n5" onClick="moveHorse(5)">5</div>
+            <div class="coin" id="n6" onClick="moveHorse(6)">6</div>
+            <div class="coin" id="n7" onClick="moveHorse(7)">7</div>
+            <div class="coin" id="n8" onClick="moveHorse(8)">8</div>
+            <div class="coin" id="n9" onClick="moveHorse(9)">9</div>
+            <div class="coin" id="n10" onClick="moveHorse(10)">10</div>
         </div>
         <div class="row">
-            <div class="coin" id="n37">37</div>
+            <div class="coin" id="n37" onClick="moveHorse(37)">37</div>
             <div class="red" id="r1">r1</div>
             <div class="red" id="r2">r2</div>
             <div class="red" id="r3">r3</div>
@@ -205,21 +205,21 @@
             <div class="coin" id="n11">11</div>
         </div>
         <div class="row">
-            <div class="coin" id="n36">36</div>
-            <div class="coin" id="n35">35</div>
-            <div class="coin" id="n34">34</div>
-            <div class="coin" id="n33">33</div>
-            <div class="coin" id="n32">32</div>
-            <div class="coin" id="n31">31</div>
+            <div class="coin" id="n36" onClick="moveHorse(36)">36</div>
+            <div class="coin" id="n35" onClick="moveHorse(35)">35</div>
+            <div class="coin" id="n34" onClick="moveHorse(34)">34</div>
+            <div class="coin" id="n33" onClick="moveHorse(33)">33</div>
+            <div class="coin" id="n32" onClick="moveHorse(32)">32</div>
+            <div class="coin" id="n31" onClick="moveHorse(31)">31</div>
             <div class="coin"></div>
             <div class="coin"></div>
             <div class="coin"></div>
-            <div class="coin" id="n17">17</div>
-            <div class="coin" id="n16">16</div>
-            <div class="coin" id="n15">15</div>
-            <div class="coin" id="n14">14</div>
-            <div class="green" id="n13">13</div>
-            <div class="coin" id="n12">12</div>
+            <div class="coin" id="n17" onClick="moveHorse(17)">17</div>
+            <div class="coin" id="n16" onClick="moveHorse(16)">16</div>
+            <div class="coin" id="n15" onClick="moveHorse(15)">15</div>
+            <div class="coin" id="n14" onClick="moveHorse(14)">14</div>
+            <div class="green" id="n13" onClick="moveHorse(13)">13</div>
+            <div class="coin" id="n12" onClick="moveHorse(12)">12</div>
         </div>
         <div class="row">
             <div class="yellow"></div>
@@ -228,9 +228,9 @@
             <div class="yellow"></div>
             <div class="yellow"></div>
             <div class="yellow"></div>
-            <div class="coin" id="n30">30</div>
+            <div class="coin" id="n30" >30</div>
             <div class="yellow" id="y5">y5</div>
-            <div class="coin" id="n18">18</div>
+            <div class="coin" id="n18" >18</div>
             <div class="green"></div>
             <div class="green"></div>
             <div class="green"></div>
@@ -245,9 +245,9 @@
             <div class="yellow"></div>
             <div class="player3"></div>
             <div class="yellow"></div>
-            <div class="coin" id="n29">29</div>
+            <div class="coin" id="n29" onClick="moveHorse(29)">29</div>
             <div class="yellow" id="y4">y4</div>
-            <div class="coin" id="n19">19</div>
+            <div class="coin" id="n19" onClick="moveHorse(19)">19</div>
             <div class="green"></div>
             <div class="player4"></div>
             <div class="green"></div>
@@ -262,9 +262,9 @@
             <div class="yellow"></div>
             <div class="yellow"></div>
             <div class="yellow"></div>
-            <div class="coin" id="n28">28</div>
+            <div class="coin" id="n28" onClick="moveHorse(28)">28</div>
             <div class="yellow" id="y3">y3</div>
-            <div class="coin" id="n20">20</div>
+            <div class="coin" id="n20" onClick="moveHorse(20)">20</div>
             <div class="green"></div>
             <div class="green"></div>
             <div class="green"></div>
@@ -279,9 +279,9 @@
             <div class="yellow"></div>
             <div class="yellow"></div>
             <div class="yellow"></div>
-            <div class="coin" id="n27">27</div>
+            <div class="coin" id="n27" onClick="moveHorse(27)">27</div>
             <div class="yellow" id="y2">y2</div>
-            <div class="coin" id="n21">21</div>
+            <div class="coin" id="n21" onClick="moveHorse(21)">21</div>
             <div class="green"></div>
             <div class="green"></div>
             <div class="green"></div>
@@ -296,9 +296,9 @@
             <div class="yellow"></div>
             <div class="player3"></div>
             <div class="yellow"></div>
-            <div class="yellow" id="n26">26</div>
+            <div class="yellow" id="n26"onClick="moveHorse(26)">26</div>
             <div class="yellow" id="y1">y1</div>
-            <div class="coin" id="n5">22</div>
+            <div class="coin" id="n5" onClick="moveHorse(22)">22</div>
             <div class="green"></div>
             <div class="player4"></div>
             <div class="green"></div>
@@ -313,9 +313,9 @@
             <div class="yellow"></div>
             <div class="yellow"></div>
             <div class="yellow"></div>
-            <div class="coin" id="n25">25</div>
-            <div class="coin" id="n24">24</div>
-            <div class="coin" id="n23">23</div>
+            <div class="coin" id="n25" onClick="moveHorse(25)">25</div>
+            <div class="coin" id="n24" onClick="moveHorse(24)">24</div>
+            <div class="coin" id="n23" onClick="moveHorse(23)">23</div>
             <div class="green"></div>
             <div class="green"></div>
             <div class="green"></div>

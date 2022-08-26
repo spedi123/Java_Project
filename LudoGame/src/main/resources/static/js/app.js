@@ -26,13 +26,12 @@ function setToPosition(pos){
 	console.log(toPos)
 }
 
-const gameBtn = document.querySelector('.game_button')
+const soundBtn = document.querySelector('.sound_button')
 	
 const bgSound = new Audio("/sounds/bg.mp3");
 console.log(bgSound)
 
-
-gameBtn.addEventListener('click', () => {
+soundBtn.addEventListener('click', () => {
 	playSound(bgSound)
 })
 		

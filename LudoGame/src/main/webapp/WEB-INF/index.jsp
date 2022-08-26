@@ -874,6 +874,7 @@
             <div class="green"></div>
         </div>
     </div>
+    <div class="sound_button btn btn-success">Sound</div>
     <form action="/test1/move" method='post'>
     	<input type="hidden" name="dice1" value="${dice1}"/>
     	<input type="hidden" name="dice2" value="${dice2}"/>
